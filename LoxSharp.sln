@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{16D9DA4D-AC51-4C79-AF0F-7E46D45B81C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debug", "Debug\Debug.csproj", "{2849A6C8-B207-4FF3-8FC1-2B0F94600E95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Debuger", "Debuger\Debuger.csproj", "{2849A6C8-B207-4FF3-8FC1-2B0F94600E95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
