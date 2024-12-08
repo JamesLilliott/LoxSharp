@@ -1,5 +1,5 @@
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.JavaScript;
+using LoxSharp.Parse;
+using Tools;
 
 namespace LoxSharp;
 
@@ -73,15 +73,32 @@ public class Lox
         var scanner = new Scanner(source);
         List<Token> tokens = scanner.ScanTokens();
 
-        foreach (var token in tokens)
+        var parser = new Parser(tokens);
+        var expression = parser.Parse();
+
+        if (_hadError)
         {
-            Console.WriteLine(token);
+            return;
         }
+
+        Console.WriteLine(new AstPrinter().Print(expression));
     }
 
     public static void Error(int line, string message)
     {
         Report(line, "", message);
+    }
+    
+    public static void Error(Token token, string message)
+    {
+        if (token.Type == TokenType.EOF)
+        {
+            Report(token.Line, "at end", message);
+        }
+        else
+        {
+            Report(token.Line, $"at {token.Lexeme}", message);   
+        }
     }
 
     private static void Report(int line, string where, string message)

@@ -1,9 +1,9 @@
-using System.Linq.Expressions;
 using System.Text;
 using LoxSharp.Expressions;
+using LoxSharp.Visitors;
 using Expression = LoxSharp.Expressions.Expression;
 
-namespace LoxSharp.Visitors;
+namespace Tools;
 
 public class AstPrinter : IVisitor<string>
 {
