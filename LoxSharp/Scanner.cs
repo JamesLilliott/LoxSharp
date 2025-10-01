@@ -71,12 +71,29 @@ public class Scanner(string source)
             
             // Ignored characters
             case '/':
-                //  TODO: can this be put into a function?
                 if (Match('/'))
                 {
-                    if (Peek() != '\n' && !IsAtEnd())
+                    while (Peek() != '\n' && !IsAtEnd())
                     {
                         Advance();
+                    }
+                }
+                else if (Match('*'))
+                {
+                    var endComment = false;
+                    while (!endComment)
+                    {
+                        if (Peek() == '*' && !IsAtEnd() && PeekNext() == '/')
+                        {
+                            endComment = true;
+                        }
+
+                        if (Peek() == '\n')
+                        {
+                            _line++;
+                        }
+                        
+                        Advance(); Advance();
                     }
                 }
                 else
